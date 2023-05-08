@@ -1,8 +1,12 @@
 console.log("Executing post puchase script");
 
+function filterFreeProduct(htmlElement) {
+  return htmlElement.textContent.trim().toLowerCase().includes("free")
+}
+
 function updateOrderStatusPage() {
   const REFRESH_TIME_MS = 1000 * 5;
-  if (Shopify?.checkout?.credit_card != null) {
+  // if (Shopify?.checkout?.credit_card != null) {
     // if user navigates to a new post puchase page
     if (!window.location.hash.includes("updated")) {
       // queue a timeout to refresh the page in REFRESH_TIME_MS
@@ -20,7 +24,8 @@ function updateOrderStatusPage() {
         "beforebegin",
         `<div class="content" style="display: flex;width: 100%;justify-content: center;align-items: center;height: 100%;"><h1>Updating order, please wait...</h1></div>`
       );
-    } else {
+    // } else {
+    } else if (Array.from($$('.order-summary__emphasis')).filter(filterFreeProduct).length > 0) {
       // otherwise, add complimentary product message to the post purchase page.
       let customerMessage = "A complimentary gift was added to your order!";
 
@@ -35,7 +40,7 @@ function updateOrderStatusPage() {
 
       orderHeader.appendChild(headingElement);
     }
-  }
+  // }
 }
 
 updateOrderStatusPage();
