@@ -25,7 +25,7 @@ function updateOrderStatusPage() {
         `<div class="content" style="display: flex;width: 100%;justify-content: center;align-items: center;height: 100%;"><h1>Updating order, please wait...</h1></div>`
       );
     // } else {
-    } else if (Array.from($$('.order-summary__emphasis')).filter(filterFreeProduct).length > 0) {
+    } else if (Array.from(document.querySelectorAll('.product__price .order-summary__emphasis')).filter(filterFreeProduct).length > 0) {
       // otherwise, add complimentary product message to the post purchase page.
       let customerMessage = "A complimentary gift was added to your order!";
 
