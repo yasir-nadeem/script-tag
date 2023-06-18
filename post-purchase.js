@@ -5,7 +5,7 @@ function filterFreeProduct(htmlElement) {
 }
 
 function updateOrderStatusPage() {
-  const REFRESH_TIME_MS = 1000 * 5;
+  const REFRESH_TIME_MS = 1000 * 30;
   // if (Shopify?.checkout?.credit_card != null) {
     // if user navigates to a new post puchase page
     if (!window.location.hash.includes("updated")) {
